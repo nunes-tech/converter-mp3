@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usando a API de download do YouTube</title>
+    <style> body{ max-width: 600px; margin: auto; background-color: aliceblue; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;} div#resultadoDoConversao{ box-sizing: border-box; padding: 10px; width: 100%; height: 400px; background-color: #ffffff; } #buttonApi{ background-color: transparent; border: none; height: 100%; } </style>
+</head>
+<body>
+    
+    <h1>
+        Bem-vindo - aqui você poderá baixar seus vídeos em <strong>MP3(Música)</strong> ou <strong>MP4(Vídeo)</strong>
+    </h1>
+    <label>Cole a URL(link) do vídeo do YouTube</label>
+    <input type="text" id="urlDoVideo">
+
+    <button id="converterMp3">
+        Baixar MP3
+    </button>
+
+    <div>
+        <label>Resultado da conversão:</label>
+		<div id="resultadoDoConversao"></div>
+    </div>
+
+    <script>
+        let botao = document.getElementById("converterMp3")
+        botao.addEventListener('click', baixar)
+        function baixar(){
+            let link = document.querySelector("#urlDoVideo").value;
+
+            let url = `https://convert2mp3s.com/api/button/mp3?url=${link}`;
+            let resultado = document.querySelector("#resultadoDoConversao");
+            let conteudo = `<iframe id="buttonApi" src="${url}"
+width="100%" height="100%" allowtransparency="true" scrolling="no"></iframe>`;
+
+            resultado.innerHTML = conteudo
+        }
+    </script> 
+
+</body>
+</html>
